@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import "../../App.css";
 import { usePocketBase } from "../../context/usePocketBase";
 import { Link, useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loading-icons";
 import { validateUserRegisterInput } from "../../utils/formValidation";
 import { checkIfUserExists, createAndLoginUser } from "../../api";
+import "../../styles/forms.css";
 
 function Register() {
   const { pb, syncUserState } = usePocketBase();
@@ -65,7 +65,9 @@ function Register() {
       </div>
       <form id="loginForm" className="auth-form">
         <div className="auth-form__row">
-          <label className="auth-form__label" htmlFor="register-username">Username : </label>
+          <label className="auth-form__label" htmlFor="register-username">
+            Username :{" "}
+          </label>
           <input
             ref={username}
             id="register-username"
@@ -78,7 +80,9 @@ function Register() {
           />
         </div>
         <div className="auth-form__row">
-          <label className="auth-form__label" htmlFor="register-password">Password : </label>
+          <label className="auth-form__label" htmlFor="register-password">
+            Password :{" "}
+          </label>
           <input
             id="register-password"
             ref={password}
@@ -92,7 +96,9 @@ function Register() {
         </div>
 
         <div className="auth-form__row">
-          <label className="auth-form__label" htmlFor="passwordConfirm">Confirm Password : </label>
+          <label className="auth-form__label" htmlFor="passwordConfirm">
+            Confirm Password :{" "}
+          </label>
           <input
             id="passwordConfirm"
             ref={passwordConfirm}

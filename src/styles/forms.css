@@ -76,3 +76,26 @@
   padding: 10px 0;
   margin-top: 1px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .auth-form {
+    background-color: #869663;
+    background-color: #505f31;
+  }
+
+  .auth-form label {
+    color: #ffffff;
+  }
+
+  .auth-form__input {
+    background-color: #869663;
+  }
+
+  .auth-form__input::placeholder {
+    color: #ffffff;
+  }
+
+  .auth-form__btn {
+    background-color: #a4b494;
+  }
+}

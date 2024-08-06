@@ -1,6 +1,5 @@
-import "../App.css";
+import "../styles/home.css";
 import { usePocketBase } from "../context/usePocketBase";
-
 
 function Home() {
   const { pb, syncUserState, user } = usePocketBase();
@@ -14,17 +13,23 @@ function Home() {
 
   return (
     <>
-      <h1>Welcome!</h1>
-      <p>Hello, <strong>{user?.username}</strong>. You are currently logged in!</p>
-      <div>
-        <img src="src/assets/lotr-party-gif.webp" alt="Lord of the Rings Party"></img>
+      <h1 className="home__title">Welcome!</h1>
+      <p>
+        Hello, <strong>{user?.username}</strong>. You are currently logged in!
+      </p>
+      <div className="home__img-container">
+        <div className="home__img-wrapper">
+          <img
+            className="home__img"
+            src="src/assets/lotr-party-gif.webp"
+            alt="Lord of the Rings Party"
+          ></img>
+        </div>
       </div>
       <div>
         <button onClick={handleLogoutClick}>Logout</button>
       </div>
-      <p className="notes">
-        Thanks for viewing!
-      </p>
+      <p className="notes">Thanks for viewing!</p>
     </>
   );
 }
