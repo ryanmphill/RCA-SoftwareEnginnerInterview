@@ -1,0 +1,125 @@
+.auth-form__header {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.auth-form__header h1 {
+  margin-top: 0.5rem;
+}
+
+.auth-form {
+  padding: 1.5rem 1.25rem;
+  background-color: #d4dac7;
+  text-align: left;
+  border: 3px solid #f1f1f1;
+  border-radius: 10px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+
+.auth-form__input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 2px solid #a4b494;
+  border-radius: 5px;
+}
+
+.auth-form__input,
+.auth-form__input::placeholder {
+  font-size: 16px;
+}
+
+.auth-form__btn {
+  background-color: #a4b494;
+  width: 100%;
+  color: rgb(54, 54, 53);
+  padding: 12px 15px 15px 15px;
+  min-height: 49px;
+  margin: 10px 0px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  transition: background-color 0.18s ease-in-out;
+}
+
+.auth-form__btn:hover {
+  background-color: rgba(164, 180, 148, 0.7);
+}
+
+.auth-form__btn:disabled {
+  background-color: #a4b494;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.auth-form__error {
+  color: firebrick;
+  font-size: 1rem;
+}
+
+.auth-form__icon {
+  height: 1rem;
+  position: absolute;
+  height: 100%;
+  width: auto;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 0;
+  margin-top: 1px;
+}
+
+@media (min-width: 600px) {
+  .auth-form {
+    width: 80%;
+    padding: 1.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 882px) {
+  .auth-form {
+    width: 60%;
+  }
+
+  .auth-form__error {
+    font-size: 0.8rem;
+  }
+
+  .auth-form__input,
+  .auth-form__input::placeholder {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .auth-form {
+    background-color: #869663;
+    background-color: #505f31;
+  }
+
+  .auth-form label {
+    color: #ffffff;
+  }
+
+  .auth-form__input {
+    background-color: #869663;
+  }
+
+  .auth-form__input::placeholder {
+    color: #ffffff;
+  }
+
+  .auth-form__btn {
+    background-color: #a4b494;
+  }
+
+  .auth-form__error {
+    color: rgb(255, 178, 178);
+  }
+}

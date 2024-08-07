@@ -1,0 +1,31 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.notes {
+  color: #888;
+}
+
+.authenticating {
+  height: 100vh;
+  padding-bottom: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.authenticating p {
+  font-size: 1.25rem;
+  color: #213547;
+  font-weight: bold;
+}
+
+.authenticating svg {
+  height: 100px;
+  width: 100%;
+}
