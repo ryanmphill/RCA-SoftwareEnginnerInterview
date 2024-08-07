@@ -63,7 +63,7 @@ function Register() {
       <div className="auth-form__header">
         <h1>Create An Account</h1>
       </div>
-      <form id="loginForm" className="auth-form">
+      <form id="registerForm" className="auth-form">
         <div className="auth-form__row">
           <label className="auth-form__label" htmlFor="register-username">
             Username :{" "}
@@ -120,7 +120,7 @@ function Register() {
 
         <div className="auth-form__row">
           <button
-            id="loginButton"
+            id="registerButton"
             className="auth-form__btn"
             type="button"
             onClick={handleCreateUserClick}
