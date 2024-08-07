@@ -21,7 +21,7 @@ function Home() {
         <div className="home__img-wrapper">
           <img
             className="home__img"
-            src="src/assets/lotr-party-gif.webp"
+            src="/lotr-party-gif.webp"
             alt="Lord of the Rings Party"
           ></img>
         </div>
