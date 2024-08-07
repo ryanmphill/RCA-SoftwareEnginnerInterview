@@ -3,6 +3,7 @@
  * @param {Object} data - The user input data
  * @param {string} data.password - The user's password
  * @param {string} data.passwordConfirm - The user's password confirmation
+ * @param {string} data.username - The user's username
  * @returns {Array} - The validation errors
  */
 export function validateUserRegisterInput(data) {
@@ -33,6 +34,10 @@ export function validateUserRegisterInput(data) {
     ];
   }
 
+  if (isEmpty(data.username)) {
+    currentValidation = [...currentValidation, "Username cannot be empty"];
+  }
+
   return currentValidation;
 }
 
@@ -43,4 +48,8 @@ function containsUppercase(str) {
 function containsSpecialCharacter(str) {
   const regex = /[!@#$%^&*()\-_~`+={}[\]:;"'<>,.?/|\\]/;
   return regex.test(str);
+}
+
+function isEmpty(str) {
+  return str.trim() === "";
 }
