@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { usePocketBase } from "../../context/usePocketBase";
 import { SpinningCircles } from "react-loading-icons";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 export const Authorized = () => {
   const { token, pb, syncUserState } = usePocketBase();
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const navigate = useNavigate();
 
   /* Ensure previously stored auth credentials are still valid and up to date */
   useEffect(() => {
@@ -17,14 +18,21 @@ export const Authorized = () => {
     async function authRefresh() {
       // Early exit if no auth credentials are stored (Redirect to login)
       if (!pb?.authStore?.token) {
-        setIsAuthenticating(false);
+        navigate("/login", { replace: true });
         return;
       }
       try {
         const authData = await pb.collection("users").authRefresh();
         return authData;
       } catch (error) {
-        if (!error.isAbort && !error.response.code === 401) {
+        const isStrictModeAbort =
+          import.meta.env.MODE === "development" && error?.isAbort;
+        // 401 Unauthorized, redirect to login
+        if (error?.response?.code === 401) {
+          navigate("/login", { replace: true });
+        } else if (isStrictModeAbort) {
+          // Ignore abort errors in development strict mode
+        } else {
           throw error;
         }
       } finally {
@@ -38,7 +46,7 @@ export const Authorized = () => {
     return () => {
       ignore = true;
     };
-  }, [pb, syncUserState]);
+  }, [pb, syncUserState, navigate]);
 
   if (isAuthenticating) {
     return (

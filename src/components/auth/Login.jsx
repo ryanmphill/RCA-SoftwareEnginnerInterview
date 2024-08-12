@@ -17,6 +17,7 @@ function Login() {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors([]); // Reset any error messages
+    let errorMsgs = [];
 
     try {
       const authData = await loginUser(
@@ -30,8 +31,14 @@ function Login() {
       }
     } catch (error) {
       setIsSubmitting(false);
-      if (error.response.code === 400) {
-        setErrors([...errors, "Invalid username or password"]);
+      if (error?.response?.code === 400) {
+        errorMsgs = [...errorMsgs, "Invalid username or password"];
+        setErrors(errorMsgs);
+      } else if (String(error?.response?.code).startsWith("5")) {
+        window.alert(
+          "An error occurred while attempting to connect to the server. Please try again."
+        );
+        throw error;
       } else {
         throw error;
       }
@@ -45,7 +52,9 @@ function Login() {
       </div>
       <form id="loginForm" className="auth-form">
         <div className="auth-form__row">
-          <label className="auth-form__label" htmlFor="login-username">Username : </label>
+          <label className="auth-form__label" htmlFor="login-username">
+            Username :{" "}
+          </label>
           <input
             ref={username}
             id="login-username"
@@ -58,7 +67,9 @@ function Login() {
           />
         </div>
         <div className="auth-form__row">
-          <label className="auth-form__label" htmlFor="login-password">Password : </label>
+          <label className="auth-form__label" htmlFor="login-password">
+            Password :{" "}
+          </label>
           <input
             id="login-password"
             ref={password}
