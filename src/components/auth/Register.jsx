@@ -45,13 +45,18 @@ function Register() {
       }
     } catch (error) {
       setIsSubmitting(false);
-      if (error.response.code === 400) {
+      if (error?.response?.code === 400) {
         errorMsgs = [...errorMsgs, error.response.message];
         const usernameTaken = await checkIfUserExists(pb, data.username);
         if (usernameTaken) {
           errorMsgs = [...errorMsgs, "Username already exists"];
         }
         setErrors(errorMsgs);
+      } else if (String(error?.response?.code).startsWith("5")) {
+        window.alert(
+          "An error occurred while attempting to connect to the server. Please try again."
+        );
+        throw error;
       } else {
         throw error;
       }
